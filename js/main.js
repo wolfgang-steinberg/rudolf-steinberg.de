@@ -340,40 +340,49 @@ const ContactForm = {
     const form = document.getElementById('contact-form');
     if (!form) return;
 
-    const btn = form.querySelector('button[type="submit"]');
+    this.form = form;
+    this.btn = form.querySelector('button[type="submit"]');
+    this.fields = [
+      { el: form.querySelector('#name'),    msg: 'Bitte füllen Sie dieses Feld aus.' },
+      { el: form.querySelector('#email'),   msg: 'Bitte füllen Sie dieses Feld aus.', emailMsg: 'Bitte geben Sie eine gültige E-Mail-Adresse ein.' },
+      { el: form.querySelector('#subject'), msg: 'Bitte füllen Sie dieses Feld aus.' },
+      { el: form.querySelector('#message'), msg: 'Bitte füllen Sie dieses Feld aus.' }
+    ];
+
+    // Live-clearing: remove error on input
+    this.fields.forEach(f => {
+      if (!f.el) return;
+      f.el.addEventListener('input', () => this.clearFieldError(f.el));
+    });
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
+      this.clearErrors();
 
-      const name = form.querySelector('#name').value.trim();
-      const email = form.querySelector('#email').value.trim();
-      const subject = form.querySelector('#subject').value.trim();
-      const message = form.querySelector('#message').value.trim();
+      // Validate
+      const errors = this.validate();
+      if (errors.length) {
+        errors[0].el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        setTimeout(() => errors[0].el.focus(), 400);
+        return;
+      }
+
       const honeypot = form.querySelector('#_website')?.value || '';
 
-      if (!name || !email || !subject || !message) {
-        this.showMessage(form, 'error',
-          'Bitte füllen Sie alle Felder aus.');
-        return;
-      }
-
-      if (!this.isValidEmail(email)) {
-        this.showMessage(form, 'error',
-          'Bitte geben Sie eine gültige E-Mail-Adresse ein.');
-        return;
-      }
-
       // Disable button during submission
-      btn.disabled = true;
-      const origText = btn.textContent;
-      btn.textContent = 'Wird gesendet\u2026';
+      this.btn.disabled = true;
+      const origText = this.btn.textContent;
+      this.btn.textContent = 'Wird gesendet\u2026';
 
       try {
         const res = await fetch('/api/contact', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            name, email, subject, message,
+            name: this.fields[0].el.value.trim(),
+            email: this.fields[1].el.value.trim(),
+            subject: this.fields[2].el.value.trim(),
+            message: this.fields[3].el.value.trim(),
             _website: honeypot,
             _t: this._loadTime
           })
@@ -382,37 +391,117 @@ const ContactForm = {
         const data = await res.json();
 
         if (data.ok) {
-          form.reset();
-          this._loadTime = Date.now() / 1000;
-          this.showMessage(form, 'success',
-            'Ihre Nachricht wurde erfolgreich gesendet.');
+          this.showSuccess();
         } else {
-          this.showMessage(form, 'error',
-            data.error || 'Ein Fehler ist aufgetreten.');
+          const err = data.error || 'Ein Fehler ist aufgetreten.';
+          if (data.field) {
+            const target = this.form.querySelector('#' + data.field);
+            if (target) {
+              this.showFieldError(target, err);
+              target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              setTimeout(() => target.focus(), 400);
+              return;
+            }
+          }
+          // Fallback: map known error patterns to fields
+          if (/e-?mail|domain/i.test(err)) {
+            const emailEl = this.fields[1].el;
+            this.showFieldError(emailEl, err);
+            emailEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            setTimeout(() => emailEl.focus(), 400);
+          } else {
+            this.showServerError(err);
+          }
         }
       } catch {
-        this.showMessage(form, 'error',
-          'Verbindungsfehler. Bitte versuchen Sie es später erneut.');
+        this.showServerError('Verbindungsfehler. Bitte versuchen Sie es später erneut.');
       } finally {
-        btn.disabled = false;
-        btn.textContent = origText;
+        this.btn.disabled = false;
+        this.btn.textContent = origText;
       }
     });
+  },
+
+  validate() {
+    const errors = [];
+    this.fields.forEach(f => {
+      if (!f.el) return;
+      const val = f.el.value.trim();
+      if (!val) {
+        this.showFieldError(f.el, f.msg);
+        errors.push(f);
+      } else if (f.emailMsg && !this.isValidEmail(val)) {
+        this.showFieldError(f.el, f.emailMsg);
+        errors.push(f);
+      }
+    });
+    return errors;
   },
 
   isValidEmail(email) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   },
 
-  showMessage(form, type, text) {
-    const existing = form.parentElement.querySelector('.form-message');
+  showFieldError(el, text) {
+    const errClass = el.tagName === 'TEXTAREA' ? 'form-textarea--error' : 'form-input--error';
+    el.classList.add(errClass);
+    const msg = document.createElement('div');
+    msg.className = 'form-error';
+    msg.setAttribute('role', 'alert');
+    msg.textContent = text;
+    el.parentElement.appendChild(msg);
+  },
+
+  clearFieldError(el) {
+    el.classList.remove('form-input--error', 'form-textarea--error');
+    const err = el.parentElement.querySelector('.form-error');
+    if (err) err.remove();
+  },
+
+  clearErrors() {
+    this.form.querySelectorAll('.form-error').forEach(e => e.remove());
+    this.form.querySelectorAll('.form-input--error, .form-textarea--error').forEach(e => {
+      e.classList.remove('form-input--error', 'form-textarea--error');
+    });
+    const banner = this.form.querySelector('.form-message');
+    if (banner) banner.remove();
+  },
+
+  showSuccess() {
+    const container = this.form.parentElement;
+    const wrapper = document.createElement('div');
+    wrapper.className = 'form-success';
+    wrapper.setAttribute('role', 'status');
+
+    const icon = document.createElement('div');
+    icon.className = 'form-success__icon';
+    icon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>';
+
+    const title = document.createElement('div');
+    title.className = 'form-success__title';
+    title.textContent = 'Nachricht gesendet';
+
+    const text = document.createElement('p');
+    text.className = 'form-success__text';
+    text.textContent = 'Vielen Dank f\u00fcr Ihre Nachricht. Wir melden uns zeitnah bei Ihnen.';
+
+    wrapper.appendChild(icon);
+    wrapper.appendChild(title);
+    wrapper.appendChild(text);
+
+    this.form.remove();
+    container.appendChild(wrapper);
+  },
+
+  showServerError(text) {
+    const existing = this.form.querySelector('.form-message');
     if (existing) existing.remove();
 
     const msg = document.createElement('div');
-    msg.className = 'form-message form-message--' + type;
+    msg.className = 'form-message form-message--error';
     msg.setAttribute('role', 'alert');
     msg.textContent = text;
-    form.parentElement.insertBefore(msg, form.nextSibling);
+    this.btn.insertAdjacentElement('beforebegin', msg);
 
     setTimeout(() => msg.remove(), 10000);
   }
