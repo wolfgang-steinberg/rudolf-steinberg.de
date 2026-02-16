@@ -5,7 +5,7 @@
  *  1. Navigation  – Mobile toggle, active link detection
  *  2. Search      – MiniSearch integration with keyboard nav
  *  3. ScrollReveal – IntersectionObserver-based animations
- *  4. ContactForm  – Client-side validation, mailto fallback
+ *  4. ContactForm  – Client-side validation, server-side submission
  */
 
 // Mark JS as available for CSS progressive enhancement
@@ -329,19 +329,23 @@ const PubNav = {
    ================================================================ */
 
 const ContactForm = {
+  _loadTime: Date.now() / 1000,
+
   init() {
     const form = document.getElementById('contact-form');
     if (!form) return;
 
-    form.addEventListener('submit', (e) => {
+    const btn = form.querySelector('button[type="submit"]');
+
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
 
       const name = form.querySelector('#name').value.trim();
       const email = form.querySelector('#email').value.trim();
       const subject = form.querySelector('#subject').value.trim();
       const message = form.querySelector('#message').value.trim();
+      const honeypot = form.querySelector('#_website')?.value || '';
 
-      // Basic validation
       if (!name || !email || !subject || !message) {
         this.showMessage(form, 'error',
           'Bitte füllen Sie alle Felder aus.');
@@ -354,19 +358,40 @@ const ContactForm = {
         return;
       }
 
-      // Compose mailto link (address assembled at runtime to deter scrapers)
-      const mailtoSubject = encodeURIComponent(subject);
-      const mailtoBody = encodeURIComponent(
-        'Name: ' + name + '\nE-Mail: ' + email + '\n\n' + message
-      );
-      const addr = ['info', 'rudolf-steinberg.de'].join('@');
-      const mailto = 'mailto:' + addr + '?subject=' +
-        mailtoSubject + '&body=' + mailtoBody;
+      // Disable button during submission
+      btn.disabled = true;
+      const origText = btn.textContent;
+      btn.textContent = 'Wird gesendet\u2026';
 
-      window.location.href = mailto;
+      try {
+        const res = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name, email, subject, message,
+            _website: honeypot,
+            _t: this._loadTime
+          })
+        });
 
-      this.showMessage(form, 'success',
-        'Ihr E-Mail-Programm sollte sich geöffnet haben.');
+        const data = await res.json();
+
+        if (data.ok) {
+          form.reset();
+          this._loadTime = Date.now() / 1000;
+          this.showMessage(form, 'success',
+            'Ihre Nachricht wurde erfolgreich gesendet.');
+        } else {
+          this.showMessage(form, 'error',
+            data.error || 'Ein Fehler ist aufgetreten.');
+        }
+      } catch {
+        this.showMessage(form, 'error',
+          'Verbindungsfehler. Bitte versuchen Sie es später erneut.');
+      } finally {
+        btn.disabled = false;
+        btn.textContent = origText;
+      }
     });
   },
 

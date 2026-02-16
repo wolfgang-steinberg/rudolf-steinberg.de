@@ -123,10 +123,16 @@
                           placeholder="Ihre Nachricht…" required></textarea>
               </div>
 
+              <!-- Honeypot — hidden from humans, filled by bots -->
+              <div style="position:absolute;left:-9999px" aria-hidden="true">
+                <label for="_website">Website</label>
+                <input type="text" id="_website" name="_website" tabindex="-1" autocomplete="off">
+              </div>
+
               <button type="submit" class="btn btn--filled">Nachricht senden</button>
 
               <p class="text-small" style="margin-top: var(--space-4); color: var(--text-tertiary);">
-                Ihre Nachricht wird per E-Mail weitergeleitet.
+                Ihre Nachricht wird direkt per E-Mail zugestellt.
               </p>
             </form>
           </div>
