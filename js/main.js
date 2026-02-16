@@ -284,7 +284,6 @@ const PubNav = {
     const links = document.querySelectorAll('.pub-nav__link');
     if (!links.length) return;
 
-    // Collect target sections from link hrefs
     const sections = [];
     links.forEach(link => {
       const id = link.getAttribute('href').slice(1);
@@ -303,23 +302,29 @@ const PubNav = {
       });
     });
 
-    // IntersectionObserver to track active section
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            links.forEach(l => l.classList.remove('pub-nav__link--active'));
-            const active = document.querySelector(
-              '.pub-nav__link[href="#' + entry.target.id + '"]'
-            );
-            if (active) active.classList.add('pub-nav__link--active');
-          }
-        });
-      },
-      { rootMargin: '-80px 0px -70% 0px' }
-    );
+    // Scroll-spy: pick the last section whose top is above threshold
+    const offset = 120;
+    const update = () => {
+      let current = sections[0];
+      for (const s of sections) {
+        if (s.getBoundingClientRect().top <= offset) current = s;
+      }
+      links.forEach(l => l.classList.remove('pub-nav__link--active'));
+      const active = document.querySelector(
+        '.pub-nav__link[href="#' + current.id + '"]'
+      );
+      if (active) active.classList.add('pub-nav__link--active');
+    };
 
-    sections.forEach(s => observer.observe(s));
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => { update(); ticking = false; });
+        ticking = true;
+      }
+    }, { passive: true });
+
+    update();
   }
 };
 
