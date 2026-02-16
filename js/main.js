@@ -37,6 +37,11 @@ const Navigation = {
       if (e.key === 'Escape' && this.isOpen) this.toggleMenu();
     });
 
+    // Close when clicking overlay background
+    this.overlay.addEventListener('click', (e) => {
+      if (e.target === this.overlay && this.isOpen) this.toggleMenu();
+    });
+
     // Close when clicking overlay links
     this.overlay.querySelectorAll('.nav__overlay-link').forEach(link => {
       link.addEventListener('click', () => {
