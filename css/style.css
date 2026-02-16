@@ -542,13 +542,15 @@ a:focus-visible {
 .nav__overlay {
   position: fixed;
   inset: 0;
-  background: var(--color-charcoal);
+  background: rgba(61, 56, 53, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   z-index: 200;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: var(--space-8);
+  gap: var(--space-6);
   opacity: 0;
   pointer-events: none;
   transition: opacity var(--duration-normal) var(--ease-default);
@@ -560,17 +562,23 @@ a:focus-visible {
 }
 
 .nav__overlay-link {
-  font-family: var(--font-heading);
-  font-size: var(--text-2xl);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
   color: var(--color-taupe);
   text-decoration: none;
-  padding: var(--space-3);
-  transition: color var(--duration-fast) var(--ease-default);
+  padding: var(--space-2) 0;
+  border-bottom: 2px solid transparent;
+  transition: color var(--duration-fast) var(--ease-default),
+              border-color var(--duration-fast) var(--ease-default);
 }
 
 .nav__overlay-link:hover,
 .nav__overlay-link--active {
   color: #FFFFFF;
+  border-bottom-color: var(--color-blue);
 }
 
 .nav__overlay-link:focus-visible {
@@ -1177,6 +1185,15 @@ a.card:hover {
   background: rgba(166, 61, 47, 0.1);
   color: var(--color-error);
   border: var(--border-thin) solid var(--color-error);
+}
+
+.form-assist {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  opacity: 0;
+  z-index: -1;
 }
 
 .email-protected::before {
