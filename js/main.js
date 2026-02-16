@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
   ScrollReveal.init();
   ContactForm.init();
   PubNav.init();
+  StickyOffset.init();
 });
 
 
@@ -335,7 +336,28 @@ const PubNav = {
 
 
 /* ================================================================
-   5. CONTACT FORM
+   5. STICKY OFFSET — Dynamic scroll-margin-top
+   ================================================================ */
+
+const StickyOffset = {
+  init() {
+    const pubNav = document.querySelector('.pub-nav');
+    if (!pubNav) return;
+
+    const update = () => {
+      document.documentElement.style.setProperty(
+        '--pub-nav-height', pubNav.offsetHeight + 'px'
+      );
+    };
+
+    new ResizeObserver(update).observe(pubNav);
+    update();
+  }
+};
+
+
+/* ================================================================
+   6. CONTACT FORM
    ================================================================ */
 
 const ContactForm = {
