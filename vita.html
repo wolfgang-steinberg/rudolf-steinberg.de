@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self'; font-src 'self'; img-src 'self' data:; media-src 'self'; form-action 'self' mailto:; frame-ancestors 'none'; base-uri 'self';">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>Vita — Prof. Dr. jur. Rudolf Steinberg</title>
+  <meta name="description" content="Akademischer Lebenslauf von Prof. Dr. jur. Rudolf Steinberg — Stationen, Ehrungen und Mitgliedschaften.">
+  <meta property="og:title" content="Vita — Prof. Dr. jur. Rudolf Steinberg">
+  <meta property="og:description" content="Akademischer Lebenslauf — Stationen, Ehrungen und Mitgliedschaften.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="de_DE">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Zum Inhalt springen</a>
+
+  <div class="site-wrapper">
+    <!-- ============ HEADER ============ -->
+    <header class="site-header">
+      <nav class="nav" aria-label="Hauptnavigation">
+        <a href="index.html" class="nav__brand">Rudolf Steinberg</a>
+
+        <ul class="nav__links">
+          <li><a href="vita.html" class="nav__link nav__link--active" aria-current="page">Vita</a></li>
+          <li><a href="goethe-universitaet.html" class="nav__link">Goethe-Universität</a></li>
+          <li><a href="publikationen.html" class="nav__link">Publikationen</a></li>
+          <li><a href="vortraege.html" class="nav__link">Vorträge</a></li>
+          <li><a href="kontakt.html" class="nav__link">Kontakt</a></li>
+        </ul>
+
+        <!-- Search Toggle -->
+        <div class="search" role="search">
+          <button class="search__toggle" aria-label="Suche öffnen" id="search-toggle">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </button>
+        </div>
+
+        <button class="nav__toggle" aria-label="Navigation öffnen" aria-expanded="false">
+          <span class="nav__toggle-bar"></span>
+        </button>
+      </nav>
+
+      <!-- Mobile Overlay -->
+      <div class="nav__overlay" aria-hidden="true">
+        <a href="vita.html" class="nav__overlay-link nav__overlay-link--active">Vita</a>
+        <a href="goethe-universitaet.html" class="nav__overlay-link">Goethe-Universität</a>
+        <a href="publikationen.html" class="nav__overlay-link">Publikationen</a>
+        <a href="vortraege.html" class="nav__overlay-link">Vorträge</a>
+        <a href="kontakt.html" class="nav__overlay-link">Kontakt</a>
+      </div>
+    </header>
+
+    <!-- Search Panel (fullscreen top) -->
+    <div class="search__backdrop" id="search-backdrop"></div>
+    <div class="search__panel" id="search-panel">
+      <label for="search-input" class="sr-only">Suchbegriff eingeben</label>
+      <input type="search" id="search-input" class="search__input" placeholder="Suchen…" autocomplete="off">
+      <button class="search__close" id="search-close" aria-label="Suche schließen">&times;</button>
+    </div>
+    <div class="search__results" id="search-results" role="listbox" aria-label="Suchergebnisse"></div>
+
+    <!-- ============ MAIN ============ -->
+    <main class="site-main" id="main-content">
+      <div class="container container--wide">
+
+        <!-- Page Header -->
+        <div class="page-header reveal">
+          <p class="page-header__eyebrow">Lebenslauf</p>
+          <h1 class="page-header__title">Vita</h1>
+        </div>
+
+        <nav class="pub-nav reveal" aria-label="Abschnitte">
+          <a href="#person" class="pub-nav__link pub-nav__link--active">Zur Person</a>
+          <a href="#werdegang" class="pub-nav__link">Werdegang</a>
+          <a href="#ehrungen" class="pub-nav__link">Ehrungen</a>
+          <a href="#mitgliedschaften" class="pub-nav__link">Mitgliedschaften</a>
+          <a href="#gastprofessuren" class="pub-nav__link">Gastprofessuren</a>
+        </nav>
+
+        <!-- Zur Person -->
+        <section class="section reveal" id="person" aria-label="Zur Person">
+          <h2 class="section-heading section-heading--decorated">Zur Person</h2>
+          <div class="prose">
+            <p>
+              Rudolf Steinberg, geboren am 23. Juni 1943 in Cochem/Mosel.
+              Verheiratet mit Angelika Schriever-Steinberg; vier Kinder:
+              Philipp, Matthias, Julia und Felix.
+            </p>
+          </div>
+        </section>
+
+        <!-- Ausbildung und Werdegang -->
+        <section class="section" id="werdegang" aria-label="Ausbildung und Werdegang">
+          <h2 class="section-heading section-heading--decorated reveal">Ausbildung und Werdegang</h2>
+
+          <div class="timeline">
+
+            <div class="timeline__entry reveal" id="vita-1">
+              <span class="timeline__date">23. Juni 1943</span>
+              <h3 class="timeline__title">Geburt in Cochem/Mosel</h3>
+            </div>
+
+            <div class="timeline__entry reveal" id="vita-2">
+              <span class="timeline__date">März 1962</span>
+              <h3 class="timeline__title">Abitur</h3>
+              <p class="timeline__description">Humanistisches Schalker Gymnasium in Gelsenkirchen</p>
+            </div>
+
+            <div class="timeline__entry reveal" id="vita-3">
+              <span class="timeline__date">Nov. 1962 – Feb. 1967</span>
+              <h3 class="timeline__title">Studium</h3>
+              <p class="timeline__description">Volkswirtschaftliches und rechtswissenschaftliches Studium an den Universitäten Freiburg i.Br. und Köln</p>
+            </div>
+
+            <div class="timeline__entry reveal" id="vita-4">
+              <span class="timeline__date">Juni 1967</span>
+              <h3 class="timeline__title">Erste Juristische Staatsprüfung</h3>
+              <p class="timeline__description">Freiburg i.Br. — Stipendiat des Cusanuswerks</p>
+            </div>
+
+            <div class="timeline__entry reveal" id="vita-5">
+              <span class="timeline__date">Aug. 1968 – April 1969</span>
+              <h3 class="timeline__title">Politikwissenschaftliches Studium</h3>
+              <p class="timeline__description">University of Michigan, Ann Arbor (USA)</p>
+            </div>
+
+            <div class="timeline__entry reveal" id="vita-6">
+              <span class="timeline__date">Dez. 1970</span>
+              <h3 class="timeline__title">Promotion zum Dr. jur.</h3>
+              <p class="timeline__description">Rechtswissenschaftliche Fakultät der Universität Freiburg i.Br.</p>
+            </div>
+
+            <div class="timeline__entry reveal" id="vita-7">
+              <span class="timeline__date">Mai 1970 – Dez. 1973</span>
+              <h3 class="timeline__title">Juristischer Vorbereitungsdienst</h3>
+              <p class="timeline__description">OLG Karlsruhe</p>
+            </div>
+
+            <div class="timeline__entry reveal" id="vita-8">
+              <span class="timeline__date">Dez. 1973</span>
+              <h3 class="timeline__title">Zweite Juristische Staatsprüfung</h3>
+              <p class="timeline__description">Stuttgart</p>
+            </div>
+
+            <div class="timeline__entry reveal" id="vita-9">
+              <span class="timeline__date">Jan. 1970 – Jan. 1978</span>
+              <h3 class="timeline__title">Wissenschaftlicher Assistent</h3>
+              <p class="timeline__description">Institut für öffentliches Recht der Albert-Ludwigs-Universität Freiburg i.Br., Lehrstuhl Prof. Dr. Konrad Hesse</p>
+            </div>
+
+            <div class="timeline__entry reveal" id="vita-10">
+              <span class="timeline__date">Jan. – Aug. 1974</span>
+              <h3 class="timeline__title">Visiting Research Associate</h3>
+              <p class="timeline__description">Institute of Public Policy Studies der University of Michigan, Ann Arbor, USA; gleichzeitig Visiting Scholar am Institute for Social Research</p>
+            </div>
+
+            <div class="timeline__entry reveal" id="vita-11">
+              <span class="timeline__date">Febr. – April 1977</span>
+              <h3 class="timeline__title">Visiting Scholar</h3>
+              <p class="timeline__description">John F. Kennedy School of Government, Harvard University, Cambridge, Mass. (USA)</p>
+            </div>
+
+            <div class="timeline__entry reveal" id="vita-12">
+              <span class="timeline__date">Jan. 1978</span>
+              <h3 class="timeline__title">Habilitation</h3>
+              <p class="timeline__description">Für „Öffentliches Recht und Verwaltungswissenschaft" durch die Rechtswissenschaftliche Fakultät der Universität Freiburg i.Br.</p>
+            </div>
+
+            <div class="timeline__entry reveal" id="vita-13">
+              <span class="timeline__date">WS 1977/78 – WS 1979/80</span>
+              <h3 class="timeline__title">Professor für Öffentliches Recht (C3)</h3>
+              <p class="timeline__description">Fakultät für Rechtswissenschaften der Universität Hannover</p>
+            </div>
+
+            <div class="timeline__entry reveal" id="vita-14">
+              <span class="timeline__date">SS 1980 – SS 2000</span>
+              <h3 class="timeline__title">Professor für Öffentliches Recht, Umweltrecht und Verwaltungswissenschaft (C4)</h3>
+              <p class="timeline__description">Fachbereich Rechtswissenschaft der Goethe-Universität Frankfurt am Main. Kodirektor der Forschungsstelle Umweltrecht. Kodirektor der Kommunalwissenschaftlichen Abteilung des Instituts für Öffentliches Recht.</p>
+            </div>
+
+            <div class="timeline__entry reveal" id="vita-15">
+              <span class="timeline__date">Mai – Juni 1990</span>
+              <h3 class="timeline__title">Visiting Scholar</h3>
+              <p class="timeline__description">University of Michigan Law School, Ann Arbor (USA)</p>
+            </div>
+
+            <div class="timeline__entry reveal" id="vita-16">
+              <span class="timeline__date">1990 – 2006</span>
+              <h3 class="timeline__title">Vertrauensdozent der Friedrich-Ebert-Stiftung</h3>
+            </div>
+
+            <div class="timeline__entry reveal" id="vita-17">
+              <span class="timeline__date">1992/93</span>
+              <h3 class="timeline__title">Dekan des Fachbereichs Rechtswissenschaft</h3>
+            </div>
+
+            <div class="timeline__entry reveal" id="vita-18">
+              <span class="timeline__date">1991 – 1993</span>
+              <h3 class="timeline__title">Wissenschaftlicher Berater</h3>
+              <p class="timeline__description">Verfassungskommission des Thüringischen Landtags</p>
+            </div>
+
+            <div class="timeline__entry reveal" id="vita-19">
+              <span class="timeline__date">1994, 1997, 2009, 2012</span>
+              <h3 class="timeline__title">Visiting Scholar</h3>
+              <p class="timeline__description">Yale Law School, New Haven, CT (USA)</p>
+            </div>
+
+            <div class="timeline__entry reveal" id="vita-20">
+              <span class="timeline__date">Aug. 1995 – Aug. 2000</span>
+              <h3 class="timeline__title">Richter des Verfassungsgerichtshofs</h3>
+              <p class="timeline__description">Freistaat Thüringen, Weimar</p>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- Ehrungen und Auszeichnungen -->
+        <section class="section" id="ehrungen" aria-label="Ehrungen und Auszeichnungen">
+          <h2 class="section-heading section-heading--decorated reveal">Ehrungen und Auszeichnungen</h2>
+
+          <div class="timeline">
+
+            <div class="timeline__entry reveal" id="ehrung-1">
+              <span class="timeline__date">2009</span>
+              <h3 class="timeline__title">Hessischer Verdienstorden</h3>
+            </div>
+
+            <div class="timeline__entry reveal" id="ehrung-2">
+              <span class="timeline__date">2012</span>
+              <h3 class="timeline__title">Ehrenplakette der Stadt Frankfurt am Main</h3>
+            </div>
+
+            <div class="timeline__entry reveal" id="ehrung-3">
+              <span class="timeline__date">2020</span>
+              <h3 class="timeline__title">Verdienstkreuz am Bande</h3>
+              <p class="timeline__description">Verdienstorden der Bundesrepublik Deutschland</p>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- Aktivitäten und Mitgliedschaften -->
+        <section class="section" id="mitgliedschaften" aria-label="Aktivitäten und Mitgliedschaften">
+          <h2 class="section-heading section-heading--decorated reveal">Aktivitäten und Mitgliedschaften</h2>
+
+          <div class="timeline">
+
+            <div class="timeline__entry reveal" id="mitglied-1">
+              <span class="timeline__date">1985</span>
+              <h3 class="timeline__title">Mitglied des „Doppelvierers" in Wiesbaden</h3>
+            </div>
+
+            <div class="timeline__entry reveal" id="mitglied-2">
+              <span class="timeline__date">1989 – 1995</span>
+              <h3 class="timeline__title">Mitglied des Beirats für Energie- und Atomrecht</h3>
+              <p class="timeline__description">Schleswig-Holsteinische Landesregierung</p>
+            </div>
+
+            <div class="timeline__entry reveal" id="mitglied-3">
+              <span class="timeline__date">Seit 2009</span>
+              <h3 class="timeline__title">Ehrenamtliche Tätigkeiten</h3>
+              <p class="timeline__description">Vorstand der Freunde und Förderer der Goethe-Universität. Vorstandsvorsitzender des Stiftungsrats des Frankfurt Institute for Advanced Studies (FIAS). Stellvertretender Vorsitzender des Stiftungsrats der Herbert-Quandt-Stiftung (bis Ende 2013). Kuratorium der Polytechnischen Gesellschaft, stellv. Vorsitzender, Vorsitzender (seit Jan. 2014). Mitglied des Hochschulrats der Hochschule für Gestaltung Offenbach. Mitglied des Verwaltungsrats der Senckenberg Gesellschaft für Naturforschung (seit 2012).</p>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- Gastprofessuren -->
+        <section class="section" id="gastprofessuren" aria-label="Gastprofessuren">
+          <h2 class="section-heading section-heading--decorated reveal">Gastprofessuren</h2>
+
+          <div class="timeline">
+
+            <div class="timeline__entry reveal" id="gastprof-1">
+              <span class="timeline__date">1968/69, 1974, 1990</span>
+              <h3 class="timeline__title">University of Michigan, Ann Arbor</h3>
+              <p class="timeline__description">Research Associate, Visiting Scholar</p>
+            </div>
+
+            <div class="timeline__entry reveal" id="gastprof-2">
+              <span class="timeline__date">1977</span>
+              <h3 class="timeline__title">Harvard University</h3>
+              <p class="timeline__description">John F. Kennedy School of Government</p>
+            </div>
+
+            <div class="timeline__entry reveal" id="gastprof-3">
+              <span class="timeline__date">1994, 1997, 2009, 2012</span>
+              <h3 class="timeline__title">Yale Law School</h3>
+              <p class="timeline__description">New Haven, CT</p>
+            </div>
+
+          </div>
+        </section>
+
+      </div>
+    </main>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="site-footer">
+      <div class="container footer__content">
+        <div>
+          <div class="footer__brand">Prof. Dr. jur. Rudolf Steinberg</div>
+          <p class="footer__description">
+            Emeritierter Professor für Öffentliches Recht,<br>
+            Umweltrecht und Verwaltungswissenschaft
+          </p>
+        </div>
+        <div class="footer__symbol" aria-hidden="true">&sect;</div>
+        <div class="footer__right">
+          <nav class="footer__links" aria-label="Footer-Navigation">
+            <a href="kontakt.html">Kontakt</a> &middot;
+            <a href="impressum.html">Impressum</a> &middot;
+            <a href="datenschutz.html">Datenschutz</a>
+          </nav>
+          <p class="footer__legal">&copy; 2026 Rudolf Steinberg</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/minisearch@7.1.2/dist/umd/index.min.js" integrity="sha384-IniM+QBDckT3t/xRvZUiUyns2i4VQ1OFdqa5l/YN7RBCzb/BtLOoN6PDsAuACzRP" crossorigin="anonymous"></script>
+  <script src="js/search-index.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

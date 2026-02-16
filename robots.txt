@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Disallow: /impressum.html
+Disallow: /datenschutz.html
+
+Sitemap: https://rudolf-steinberg.de/sitemap.xml

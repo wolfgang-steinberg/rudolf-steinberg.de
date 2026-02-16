@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self'; font-src 'self'; img-src 'self' data:; media-src 'self'; form-action 'self' mailto:; frame-ancestors 'none'; base-uri 'self';">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>Prof. Dr. jur. Rudolf Steinberg</title>
+  <meta name="description" content="Prof. Dr. jur. Rudolf Steinberg — Emeritierter Professor für Öffentliches Recht, Umweltrecht und Verwaltungswissenschaft. Präsident der Goethe-Universität Frankfurt am Main 2000–2008.">
+  <meta property="og:title" content="Prof. Dr. jur. Rudolf Steinberg">
+  <meta property="og:description" content="Emeritierter Professor für Öffentliches Recht, Umweltrecht und Verwaltungswissenschaft an der Goethe-Universität Frankfurt am Main.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="de_DE">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Zum Inhalt springen</a>
+
+  <div class="site-wrapper">
+    <!-- ============ HEADER ============ -->
+    <header class="site-header">
+      <nav class="nav" aria-label="Hauptnavigation">
+        <a href="index.html" class="nav__brand">Rudolf Steinberg</a>
+
+        <ul class="nav__links">
+          <li><a href="vita.html" class="nav__link">Vita</a></li>
+          <li><a href="goethe-universitaet.html" class="nav__link">Goethe-Universität</a></li>
+          <li><a href="publikationen.html" class="nav__link">Publikationen</a></li>
+          <li><a href="vortraege.html" class="nav__link">Vorträge</a></li>
+          <li><a href="kontakt.html" class="nav__link">Kontakt</a></li>
+        </ul>
+
+        <!-- Search Toggle -->
+        <div class="search" role="search">
+          <button class="search__toggle" aria-label="Suche öffnen" id="search-toggle">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </button>
+        </div>
+
+        <button class="nav__toggle" aria-label="Navigation öffnen" aria-expanded="false">
+          <span class="nav__toggle-bar"></span>
+        </button>
+      </nav>
+
+      <!-- Mobile Overlay -->
+      <div class="nav__overlay" aria-hidden="true">
+        <a href="vita.html" class="nav__overlay-link">Vita</a>
+        <a href="goethe-universitaet.html" class="nav__overlay-link">Goethe-Universität</a>
+        <a href="publikationen.html" class="nav__overlay-link">Publikationen</a>
+        <a href="vortraege.html" class="nav__overlay-link">Vorträge</a>
+        <a href="kontakt.html" class="nav__overlay-link">Kontakt</a>
+      </div>
+    </header>
+
+    <!-- Search Panel (fullscreen top) -->
+    <div class="search__backdrop" id="search-backdrop"></div>
+    <div class="search__panel" id="search-panel">
+      <label for="search-input" class="sr-only">Suchbegriff eingeben</label>
+      <input type="search" id="search-input" class="search__input" placeholder="Suchen…" autocomplete="off">
+      <button class="search__close" id="search-close" aria-label="Suche schließen">&times;</button>
+    </div>
+    <div class="search__results" id="search-results" role="listbox" aria-label="Suchergebnisse"></div>
+
+    <!-- ============ MAIN ============ -->
+    <main class="site-main" id="main-content">
+      <div class="container">
+
+        <!-- Hero -->
+        <section class="hero reveal" aria-label="Vorstellung">
+          <img src="portrait.webp" alt="Portrait von Prof. Dr. jur. Rudolf Steinberg"
+               class="hero__portrait" width="400" height="500" loading="eager">
+
+          <div class="hero__content">
+            <h1 class="hero__name">Prof. Dr. jur. Rudolf Steinberg</h1>
+            <p class="hero__title">
+              Emeritierter Professor für Öffentliches Recht, Umweltrecht
+              und Verwaltungswissenschaft an der Goethe-Universität Frankfurt am Main
+            </p>
+            <p class="hero__meta">Präsident der Goethe-Universität 2000 – 2008</p>
+            <div class="hero__actions">
+              <a href="vita.html" class="btn">Zur Vita</a>
+              <a href="publikationen.html" class="btn btn--filled">Publikationen</a>
+            </div>
+          </div>
+        </section>
+
+        <!-- Highlight Cards -->
+        <section class="section" aria-label="Überblick">
+          <div class="grid-3col reveal-stagger">
+
+            <a href="vita.html" class="card reveal">
+              <img src="icons/scales.svg" alt="" class="card__icon card__icon--svg" aria-hidden="true">
+              <h2 class="card__title">Forschung</h2>
+              <p class="card__text">
+                Öffentliches Recht, Umweltrecht, Fachplanungsrecht,
+                Religionsverfassungsrecht und Verwaltungswissenschaft.
+              </p>
+              <span class="card__link-hint">Mehr erfahren →</span>
+            </a>
+
+            <a href="publikationen.html" class="card reveal">
+              <img src="icons/book.svg" alt="" class="card__icon card__icon--svg" aria-hidden="true">
+              <h2 class="card__title">Publikationen</h2>
+              <p class="card__text">
+                Zahlreiche Monographien und Aufsätze, erschienen bei
+                Nomos, Suhrkamp, Campus, Duncker &amp; Humblot und weiteren.
+              </p>
+              <span class="card__link-hint">Zur Übersicht →</span>
+            </a>
+
+            <a href="goethe-universitaet.html" class="card reveal">
+              <img src="icons/goethe.svg" alt="" class="card__icon card__icon--svg" aria-hidden="true">
+              <h2 class="card__title">Goethe-Universität</h2>
+              <p class="card__text">
+                Präsident der Goethe-Universität 2000–2008. Stiftungsuniversität,
+                Campus Westend, drei Exzellenzcluster.
+              </p>
+              <span class="card__link-hint">Mehr erfahren →</span>
+            </a>
+
+          </div>
+        </section>
+
+        <!-- Schwerpunkte -->
+        <section class="section reveal" aria-label="Schwerpunkte">
+          <h2 class="section-heading section-heading--decorated">Schwerpunkte</h2>
+          <div class="prose">
+            <p>
+              Die wissenschaftliche Arbeit von Rudolf Steinberg umfasst ein breites Spektrum
+              des Öffentlichen Rechts. Zu seinen Schwerpunkten zählen das Umwelt- und
+              Planungsrecht, in dem er mit seinem Standardwerk <em>Fachplanung</em> (Nomos, mehrere
+              Auflagen) maßgebliche Beiträge geleistet hat, sowie das Verhältnis von Staat,
+              Verfassung und Religion — ein Thema, dem er sich insbesondere seit seiner
+              Emeritierung intensiv widmet.
+            </p>
+            <p>
+              Als Präsident der Goethe-Universität Frankfurt am Main gestaltete er die
+              Transformation zur Stiftungsuniversität, den Umzug auf den Campus Westend
+              und die erfolgreiche Teilnahme an der Exzellenzinitiative.
+            </p>
+          </div>
+        </section>
+
+      </div>
+    </main>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="site-footer">
+      <div class="container footer__content">
+        <div>
+          <div class="footer__brand">Prof. Dr. jur. Rudolf Steinberg</div>
+          <p class="footer__description">
+            Emeritierter Professor für Öffentliches Recht,<br>
+            Umweltrecht und Verwaltungswissenschaft
+          </p>
+        </div>
+        <div class="footer__symbol" aria-hidden="true">&sect;</div>
+        <div class="footer__right">
+          <nav class="footer__links" aria-label="Footer-Navigation">
+            <a href="kontakt.html">Kontakt</a> &middot;
+            <a href="impressum.html">Impressum</a> &middot;
+            <a href="datenschutz.html">Datenschutz</a>
+          </nav>
+          <p class="footer__legal">&copy; 2026 Rudolf Steinberg</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/minisearch@7.1.2/dist/umd/index.min.js" integrity="sha384-IniM+QBDckT3t/xRvZUiUyns2i4VQ1OFdqa5l/YN7RBCzb/BtLOoN6PDsAuACzRP" crossorigin="anonymous"></script>
+  <script src="js/search-index.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
